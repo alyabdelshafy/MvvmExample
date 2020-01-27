@@ -38,4 +38,14 @@ class MainActivity : AppCompatActivity() {
         })
 
     }
+
+
+//var allByDefault: Int? // error: explicit initializer required, default getter and setter implied
+//var initialized = 1 // has type Int, default getter and setter
+//    The full syntax of a read-only property declaration differs from a mutable one in two ways:
+//    it starts with val instead of var and does not allow a setter:
+//    val simple: Int? // has type Int, default getter, must be initialized in constructor
+//    val inferredType = 1 // has type Int and a default getter
+//    val isEmpty: Boolean
+//    get() = this.size == 0
 }
