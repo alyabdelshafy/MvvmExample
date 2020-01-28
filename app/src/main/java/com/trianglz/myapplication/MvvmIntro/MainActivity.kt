@@ -2,21 +2,30 @@ package com.trianglz.myapplication.MvvmIntro
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.trianglz.myapplication.R
+import com.trianglz.myapplication.mvvmDataBinding.Movie
+import kotlin.math.log
 
 class MainViewModel: ViewModel() {
 
+    init {
+        callApiNetwork()
+    }
 
-    private val _movieList =  MutableLiveData<String>()
-    val moveList : LiveData<String> = _movieList
+
+    private val _movieList =  MutableLiveData<List<Movie>>()
+    val moveList : LiveData<List<Movie>> = _movieList
 
     fun callApiNetwork(){
         // setting here _movieList
+        val movieListApi = listOf<Movie>(Movie("test",1),Movie("second movie",3))
+        _movieList.value = movieListApi
     }
 
 
@@ -33,8 +42,9 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
-        mainViewModel.moveList.observe(this, Observer {
 
+        mainViewModel.moveList.observe(this, Observer {
+            
         })
 
     }
